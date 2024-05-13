@@ -21,13 +21,16 @@ To set up PHP, MySQL, and phpMyAdmin using Docker, follow these steps:
     docker pull phpmyadmin
 
 3. install php
+   ```bash
     docker pull php
 
 4. install mysql
-```bash
+   ```bash
     docker pull mysql
-
-5.  After install requirements go to docker-compose file and run this command 
-
+   
+5. After install requirements go to docker-compose file and run this command
+```bash
      docker-compose up
+
+
 
