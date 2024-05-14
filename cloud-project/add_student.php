@@ -54,16 +54,23 @@ try {
         $cgpa = floatval($_POST['cgpa']);
         $id = htmlspecialchars($_POST['id']);
 
-        // Validate input data
-        if(empty($name) || empty($id)) {
-            throw new Exception("Name and ID are required fields");
-        }
-        if($age <= 0) {
-            throw new Exception("Age must be a positive integer");
-        }
-        if($cgpa < 0 || $cgpa > 4) {
-            throw new Exception("CGPA must be between 0 and 4");
-        }
+// Validate input data
+if(empty($name) || empty($id)) {
+    throw new Exception("Name and ID are required fields");
+}
+if(is_numeric($name)) {
+    throw new Exception("Name must be a string");
+}
+if($age <= 0) {
+    throw new Exception("Age must be a positive integer");
+}
+if($age > 30) {
+    throw new Exception("Age cannot exceed 30 years");
+}
+if($cgpa < 0 || $cgpa > 4) {
+    throw new Exception("CGPA must be between 0 and 4");
+}
+
                 // Check if student with same ID already exists
                 $stmt_check = $conn->prepare("SELECT * FROM students WHERE id = :id");
                 $stmt_check->bindParam(':id', $id);
