@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Student</title>
     <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <div class="container">
@@ -70,6 +71,10 @@ if($age > 30) {
 if($cgpa < 0 || $cgpa > 4) {
     throw new Exception("CGPA must be between 0 and 4");
 }
+if(strlen($id) !== 8) {
+    throw new Exception("Student ID must be exactly 8 characters long");
+}
+
 
                 // Check if student with same ID already exists
                 $stmt_check = $conn->prepare("SELECT * FROM students WHERE id = :id");
